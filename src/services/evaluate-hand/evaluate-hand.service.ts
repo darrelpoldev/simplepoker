@@ -82,6 +82,6 @@ export class EvaluateHandService {
             this.hand.possibleHandCategories.push(HandRank.STRAIGHT_FLUSH);
         };
 
-        console.log(this.hand);
+        console.log(this.hand.owner, this.hand);
     }
 }

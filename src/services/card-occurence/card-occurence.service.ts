@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import Card from 'src/models/Card';
-import { Cardoccurrence } from 'src/models/interfaces/Cardoccurrence';
+import { CardOccurrence } from 'src/models/interfaces/CardOccurrence';
 
 @Injectable()
 export class CardOccurenceService {
@@ -8,7 +8,7 @@ export class CardOccurenceService {
      * evaluate
      */
     public evaluate(cardPool: Card[]) {
-        const cardoccurrence: Cardoccurrence[] = []
+        const cardoccurrence: CardOccurrence[] = []
         cardPool.forEach((card: Card) => {
             const duplicateCard = cardoccurrence.find(occurrence => occurrence.card.value == card.value);
             if (duplicateCard) {

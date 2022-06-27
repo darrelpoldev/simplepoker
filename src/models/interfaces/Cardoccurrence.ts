@@ -1,8 +1,8 @@
 import Card from "../Card";
 
-interface Cardoccurrence {
+interface CardOccurrence {
     card: Card;
     occurrence: number;
 }
 
-export { Cardoccurrence }
+export { CardOccurrence }
