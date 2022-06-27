@@ -1,5 +1,6 @@
 import { handRank } from "src/constants";
 import { Category } from "src/enums/Category";
+import Card from "./Card";
 
 export class HandCategory {
   category: Category;

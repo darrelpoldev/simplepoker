@@ -30,6 +30,8 @@ export class EvaluateHandService {
     {
 
     }
+
+    // TODO: IMPROVE THIS DAMN CODE
     public run() {
         if (this.hand == null) {
             throw ('Please provide a hand to evaluate.');
@@ -83,6 +85,6 @@ export class EvaluateHandService {
             this.hand.possibleHandCategories.push(new HandCategory(Category.STRAIGHT_FLUSH));
         };
 
-        console.log(this.hand.owner, this.hand);
+        //  console.log(this.hand.owner, this.hand);
     }
 }
