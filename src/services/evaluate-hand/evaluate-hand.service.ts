@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Category } from 'src/enums/Category';
 import Card from 'src/models/Card';
 import Hand from 'src/models/Hand';
+import HandCategory from 'src/models/HandCategory';
 import { FlushService } from '../hand-ranking/flush/flush.service';
 import { FourOfAkindService } from '../hand-ranking/four-of-akind/four-of-akind.service';
 import { FullHouseService } from '../hand-ranking/full-house/full-house.service';
@@ -38,48 +39,48 @@ export class EvaluateHandService {
         
         const hasPair = this.onePairService.evaluate(cardPool);
         if (hasPair) {
-            this.hand.possibleHandCategories.push(Category.ONE_PAIR);
+            this.hand.possibleHandCategories.push(new HandCategory(Category.ONE_PAIR));
         };
         
         const hasTwoPair = this.twoPairService.evaluate(cardPool);
         if (hasTwoPair) {
-            this.hand.possibleHandCategories.push(Category.TWO_PAIR);
+            this.hand.possibleHandCategories.push(new HandCategory(Category.TWO_PAIR));
         };
         
         const hasThreeOfAKind = this.threeOfAkindService.evaluate(cardPool);
         
         if (hasThreeOfAKind) {
-            this.hand.possibleHandCategories.push(Category.THREE_OF_A_KIND);
+            this.hand.possibleHandCategories.push(new HandCategory(Category.THREE_OF_A_KIND));
         };
 
         const hasFourOfAKind = this.fourOfAkindService.evaluate(cardPool);
         
         if (hasFourOfAKind) {
-            this.hand.possibleHandCategories.push(Category.FOUR_OF_A_KIND);
+            this.hand.possibleHandCategories.push(new HandCategory(Category.FOUR_OF_A_KIND));
         };
 
         const hasStraight = this.straightService.evaluate(cardPool);
         
         if (hasStraight) {
-            this.hand.possibleHandCategories.push(Category.STRAIGHT);
+            this.hand.possibleHandCategories.push(new HandCategory(Category.STRAIGHT));
         };
 
         const hasFlush = this.flushService.evaluate(cardPool);
         
         if (hasFlush) {
-            this.hand.possibleHandCategories.push(Category.FLUSH);
+            this.hand.possibleHandCategories.push(new HandCategory(Category.FLUSH));
         };
 
         const hasFullHouse = this.fullHouseService.evaluate(cardPool);
         
         if (hasFullHouse) {
-            this.hand.possibleHandCategories.push(Category.FULL_HOUSE);
+            this.hand.possibleHandCategories.push(new HandCategory(Category.FULL_HOUSE));
         };
 
         const hasStraightFlush = this.straightFlushService.evaluate(cardPool);
         
         if (hasStraightFlush) {
-            this.hand.possibleHandCategories.push(Category.STRAIGHT_FLUSH);
+            this.hand.possibleHandCategories.push(new HandCategory(Category.STRAIGHT_FLUSH));
         };
 
         console.log(this.hand.owner, this.hand);
