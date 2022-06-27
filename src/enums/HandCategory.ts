@@ -1,4 +1,4 @@
-export enum HandRank {
+export enum HandCategory {
     STRAIGHT_FLUSH = "STRAIGHT_FLUSH",
     FOUR_OF_A_KIND = "FOUR_OF_A_KIND",
     FULL_HOUSE = "FULL_HOUSE",
