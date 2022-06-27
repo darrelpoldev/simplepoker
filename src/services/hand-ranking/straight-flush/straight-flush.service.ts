@@ -9,8 +9,8 @@ export class StraightFlushService {
     constructor(private straightService: StraightService, private flushService: FlushService) {}
 
     evaluate(cardPool: Card[]) {
-        const isStraigh = this.straightService.evaluate(cardPool);
+        const isStraight = this.straightService.evaluate(cardPool);
         const isFlush = this.flushService.evaluate(cardPool);
-        return isStraigh && isFlush;
+        return isStraight && isFlush;
     }
 }
