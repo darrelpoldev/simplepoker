@@ -1,4 +1,4 @@
-import { Category } from "./enums/Category";
+import { Category } from "@enums/Category";
 
 //  suits = H:HEART, S:SPADE, D:DIAMOND, C:CLUBS 
 const cardRank = [

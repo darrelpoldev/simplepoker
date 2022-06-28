@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import Card from 'src/models/Card';
-import { CardOccurrence } from 'src/models/interfaces/CardOccurrence';
-import { CardOccurenceService } from 'src/services/card-occurence/card-occurence.service';
+import Card from '@models/Card';
+import { CardOccurrence } from '@models/interfaces/CardOccurrence';
+import { CardOccurenceService } from '@services/card-occurence/card-occurence.service';
 
 @Injectable()
 export class FourOfAkindService {

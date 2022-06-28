@@ -1,9 +1,9 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import Card from './models/Card';
-import Hand from './models/Hand';
-import { DeciderService } from './services/decider/decider.service';
-import { EvaluateHandService } from './services/evaluate-hand/evaluate-hand.service';
+import Card from '@models/Card';
+import Hand from '@models/Hand';
+import { DeciderService } from '@services/decider/decider.service';
+import { EvaluateHandService } from '@services/evaluate-hand/evaluate-hand.service';
 
 @Controller()
 export class AppController {

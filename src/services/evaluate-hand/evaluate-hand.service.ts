@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Category } from 'src/enums/Category';
-import Card from 'src/models/Card';
-import Hand from 'src/models/Hand';
-import HandCategory from 'src/models/HandCategory';
+import Hand from '@models/Hand';
+import HandCategory from '@models/HandCategory';
 import { FlushService } from '../hand-ranking/flush/flush.service';
 import { FourOfAkindService } from '../hand-ranking/four-of-akind/four-of-akind.service';
 import { FullHouseService } from '../hand-ranking/full-house/full-house.service';

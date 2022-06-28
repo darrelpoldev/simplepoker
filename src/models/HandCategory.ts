@@ -1,6 +1,5 @@
-import { handRank } from "src/constants";
-import { Category } from "src/enums/Category";
-import Card from "./Card";
+import { handRank } from "@shared/constants";
+import { Category } from "@enums/Category";
 
 export class HandCategory {
   category: Category;

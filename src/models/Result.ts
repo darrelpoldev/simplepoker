@@ -1,4 +1,3 @@
-import { Category } from "src/enums/Category";
 import Hand from "./Hand";
 
 export class Result {

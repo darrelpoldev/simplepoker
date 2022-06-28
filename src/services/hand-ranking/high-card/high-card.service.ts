@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import Card from 'src/models/Card';
+import Card from '@models/Card';
 
 @Injectable()
 export class HighCardService {

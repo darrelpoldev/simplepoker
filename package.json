@@ -66,6 +66,14 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/../src/$1",
+      "^@shared/(.*)$": "<rootDir>/../src/shared/$1",
+      "^@enums/(.*)$": "<rootDir>/../src/enums/$1",
+      "^@models/(.*)$": "<rootDir>/../src/models/$1",
+      "^@interfaces/(.*)$": "<rootDir>/../src/models/interfaces/$1",
+      "^@services/(.*)$": "<rootDir>/../src/services/$1"
+    }
   }
 }

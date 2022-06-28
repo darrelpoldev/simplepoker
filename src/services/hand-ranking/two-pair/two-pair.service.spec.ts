@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import Card from '../../../models/Card';
-import { CardOccurenceService } from '../../card-occurence/card-occurence.service';
+import Card from '@models/Card';
+import { CardOccurenceService } from '@services/card-occurence/card-occurence.service';
 import { TwoPairService } from './two-pair.service';
 
 describe('TwoPairService', () => {

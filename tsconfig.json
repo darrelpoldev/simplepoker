@@ -16,6 +16,14 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@/*": ["src/*"],
+      "@shared/*": ["src/shared/*"],
+      "@enums/*": ["src/enums/*"],
+      "@models/*": ["src/models/*"],
+      "@interfaces/*": ["src/models/interfaces/*"],
+      "@services/*": ["src/services/*"],
+    }
   }
 }

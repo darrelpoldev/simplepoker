@@ -1,4 +1,4 @@
-import { cardRank } from "../constants";
+import { cardRank } from "@shared/constants";
 
 export class Card {
   value = '';

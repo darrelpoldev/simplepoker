@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import Hand from 'src/models/Hand';
-import HandCategory from 'src/models/HandCategory';
-import Result from 'src/models/Result';
+import Hand from '@models/Hand';
+import HandCategory from '@models/HandCategory';
+import Result from '@models/Result';
 
 @Injectable()
 export class DeciderService {

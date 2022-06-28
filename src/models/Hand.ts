@@ -1,5 +1,5 @@
 import Card from "./Card";
-import { Category } from "../enums/Category";
+import { Category } from "@enums/Category";
 import HandCategory from "./HandCategory";
 
 
