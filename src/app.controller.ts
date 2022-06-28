@@ -10,7 +10,7 @@ export class AppController {
   constructor(private readonly appService: AppService, private readonly evaluatehandService: EvaluateHandService, private readonly deciderService: DeciderService) {
     const playerOneCards = [
       new Card("2D"), 
-      new Card("3S"), 
+      new Card("2S"), 
       new Card("4H"), 
       new Card("5C"), 
       new Card("6D")
@@ -31,6 +31,7 @@ export class AppController {
     evaluatehandService.hand = playerTwoHand;
     evaluatehandService.run();
     const result = deciderService.evaluate(playerOneHand, playerTwoHand);
+    console.log(result);
     
   }
 

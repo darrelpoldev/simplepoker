@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import Hand from 'src/models/Hand';
 import HandCategory from 'src/models/HandCategory';
+import Result from 'src/models/Result';
 
 @Injectable()
 export class DeciderService {
 
-    public evaluate(handOne: Hand, handTwo: Hand) {
+    public evaluate(handOne: Hand, handTwo: Hand): Result {
         const handOnePossibleCategories = handOne.possibleHandCategories.sort(HandCategory.sort);
         const handTwoPossibleCategories = handTwo.possibleHandCategories.sort(HandCategory.sort);
         const handOneHighestRankingCategory = handOnePossibleCategories[0];
@@ -16,21 +17,21 @@ export class DeciderService {
         console.log(handTwo);
         //  TODO: IMPROVE THIS DAMN CODE
         if (handOne.highestHandCategory.rank > handTwo.highestHandCategory.rank) {
-            console.log(`Winner Player 1 ${handOne.highestHandCategory.category}`, handOne.cardPool);
+            return new Result(handOne);
         }
         else if (handTwo.highestHandCategory.rank > handOne.highestHandCategory.rank) {
-            console.log(`Winner Player 2 ${handTwo.highestHandCategory.category}`, handTwo.cardPool);
+            return new Result(handTwo);
         }
         else {
-            console.log(`It's a tie! Deciding by high card`);
             if (handOne.highestRankingCard.rank > handTwo.highestRankingCard.rank) {
-                console.log(`Winner Player 1 by High Card '${handOne.highestRankingCard.value}${handOne.highestRankingCard.suit}'`, handOne.cardPool);
+                return new Result(handOne);
             }
             else if (handTwo.highestRankingCard.rank > handOne.highestRankingCard.rank) {
-                console.log(`Winner Player 2 by High Card '${handTwo.highestRankingCard.value}${handTwo.highestRankingCard.suit}'`, handTwo.cardPool);
+                return new Result(handTwo);
             }
             else {
                 console.log(`Can't event decide by High Card. Split the Pot? :P`)
+                return null;
             }
         }
     }
