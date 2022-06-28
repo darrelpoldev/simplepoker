@@ -1,4 +1,4 @@
-import { cardRank } from "src/constants";
+import { cardRank } from "../constants";
 
 export class Card {
   value = '';
