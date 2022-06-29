@@ -15,9 +15,6 @@ export class Result {
         return this.winningHand.HighestRankingCard;
     }
     
-    constructor(hand: Hand) {
-        this.winningHand = hand;
-    }
 }
 
 export default Result;

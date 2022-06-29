@@ -39,7 +39,24 @@ export class EvaluateHandService {
     public decide(_handOne: Hand, _handTwo: Hand) : Result {
         const handOne = this.run(_handOne);
         const handTwo = this.run(_handTwo);
-        console.log(handOne, handTwo);
-        return null;
+        const result = new Result();
+        if (handOne.HighestHandCategory.rank > handTwo.HighestHandCategory.rank) {
+            result.winningHand = handOne;
+        }
+        else if (handTwo.HighestHandCategory.rank > handOne.HighestHandCategory.rank) {
+            result.winningHand = handTwo;
+        }
+        else {
+            if (handOne.HighestRankingCard.rank > handTwo.HighestRankingCard.rank) {
+                result.winningHand = handOne;
+            }
+            else if (handTwo.HighestRankingCard.rank > handOne.HighestRankingCard.rank) {
+                result.winningHand = handTwo;
+            }
+            else {
+                console.log('No one can win with these cards. ')
+            }
+        }
+        return result;
     }
 }

@@ -9,16 +9,16 @@ export class AppController {
   constructor(private readonly appService: AppService, private readonly evaluatehandService: EvaluateHandService) {
     const playerOneCards = [
       new Card("2D"), 
-      new Card("2S"), 
+      new Card("3S"), 
       new Card("4H"), 
-      new Card("5C"), 
+      new Card("1C"), 
       new Card("6D")
     ];
 
     const playerTwoCards = [
       new Card("2S"), 
       new Card("3D"), 
-      new Card("4C"), 
+      new Card("3C"), 
       new Card("5D"), 
       new Card("6H")
     ];
