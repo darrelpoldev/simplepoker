@@ -16,6 +16,7 @@ import { EvaluateHandService } from './evaluate-hand.service';
 
 describe('EvaluateHandService', () => {
   let evaluateHandService: EvaluateHandService;
+  
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -178,5 +179,65 @@ describe('EvaluateHandService', () => {
       handCategories = actResult.possibleHandCategories.filter(possibleCategory => possibleCategory.category == Category.STRAIGHT_FLUSH);
       expect(handCategories.length).toBe(1);
     });
-  })
+
+    describe('when PLAYER ONE has the winning cards', () => {
+      const playerOneTestCards = [
+        new Card("2D"), 
+        new Card("2S"), 
+        new Card("4H"), 
+        new Card("1C"), 
+        new Card("6D")
+      ];
+      const playerOneTestHands = new Hand(playerOneTestCards);
+  
+      const playerTwoTestCards = [
+        new Card("8D"), 
+        new Card("QS"), 
+        new Card("4H"), 
+        new Card("1C"), 
+        new Card("6D")
+      ];
+      const playerTwoTestHands = new Hand(playerTwoTestCards);
+  
+      it("should return PLAYER ONE cards", () => {
+        const result = evaluateHandService.decide(playerOneTestHands, playerTwoTestHands);
+        const winningHand = result.winningCards;
+        expect(winningHand).toBe(playerOneTestCards);
+      });
+  
+    });
+
+    describe('when PLAYER TWO has the winning cards', () => {
+      const playerOneTestCards = [
+        new Card("2D"), 
+        new Card("2S"), 
+        new Card("4H"), 
+        new Card("1C"), 
+        new Card("6D")
+      ];
+      const playerOneTestHands = new Hand(playerOneTestCards);
+  
+      const playerTwoTestCards = [
+        new Card("8D"), 
+        new Card("AS"), 
+        new Card("AH"), 
+        new Card("AC"), 
+        new Card("6D")
+      ];
+      const playerTwoTestHands = new Hand(playerTwoTestCards);
+  
+      it("should return PLAYER TWO cards", () => {
+        const result = evaluateHandService.decide(playerOneTestHands, playerTwoTestHands);
+        const winningHand = result.winningCards;
+        expect(winningHand).toBe(playerTwoTestCards);
+      });
+  
+    });
+  });
+
+  
+  
+  
+
+
 });
