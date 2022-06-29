@@ -35,15 +35,18 @@ describe('TwoPairService', () => {
 
   describe('when evaluate method is called', () => {
     it('should return true when a two pair is detected', () => {
-      expect(service.evaluate(cardsWithTwoPair)).toBeTruthy();
+      const result = service.evaluate(cardsWithTwoPair);
+      expect(result.length).toBe(1);
     });
     
     it('should return false when no two pair is detected', () => {
-      expect(service.evaluate(cardsWithoutTwoPair)).toBeFalsy();
+      const result = service.evaluate(cardsWithoutTwoPair);
+      expect(result.length).toBe(0);
     });
     
     it('should return false when cardpool is empty', () => {
-      expect(service.evaluate([])).toBeFalsy();
+      const result = service.evaluate([]);
+      expect(result.length).toBe(0);
     });
   });
 

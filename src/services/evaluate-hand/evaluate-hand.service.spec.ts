@@ -231,7 +231,6 @@ describe('EvaluateHandService', () => {
         const winningHand = result.winningCards;
         expect(winningHand).toBe(playerTwoTestCards);
       });
-  
     });
   });
 });

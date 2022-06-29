@@ -36,15 +36,18 @@ describe('ThreeOfAkindService', () => {
 
   describe('when evaluate method is called', () => {
     it('should return true when a three of a kind is detected', () => {
-      expect(service.evaluate(cardsWithThreeOfAKind)).toBeTruthy();
+      const result = service.evaluate(cardsWithThreeOfAKind);
+      expect(result.length).toBe(1);
     });
     
     it('should return false when no three of a kind is detected', () => {
-      expect(service.evaluate(cardsWithoutThreeOfAKind)).toBeFalsy();
+      const result = service.evaluate(cardsWithoutThreeOfAKind);
+      expect(result.length).toBe(0);
     });
     
     it('should return false when cardpool is empty', () => {
-      expect(service.evaluate([])).toBeFalsy();
+      const result = service.evaluate([]);
+      expect(result.length).toBe(0);
     });
   });
 });
