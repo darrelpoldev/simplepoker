@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import Card from '@models/Card';
 import { CardOccurrence } from '@models/interfaces/CardOccurrence';
 import { CardOccurenceService } from '@services/card-occurence/card-occurence.service';
+import HandCategory from '@/models/HandCategory';
+import { Category } from '@/enums/Category';
 
 @Injectable()
 export class FourOfAkindService {
@@ -10,6 +12,6 @@ export class FourOfAkindService {
 
     evaluate(cardPool: Card[]) {
         const cardOccurence: CardOccurrence[] = this.cardOccurenceService.evaluate(cardPool);
-        return cardOccurence.find(card => card.occurrence == 4);
+        return cardOccurence.find(card => card.occurrence == 4) ? [new HandCategory(Category.FOUR_OF_A_KIND)] : [];
     }
 }

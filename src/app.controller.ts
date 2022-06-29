@@ -16,8 +16,7 @@ export class AppController {
       new Card("6D")
     ];
     const playerOneHand = new Hand(playerOneCards, "Player 1");
-    evaluatehandService.hand = playerOneHand;
-    evaluatehandService.run();
+    evaluatehandService.run(playerOneHand);
 
     const playerTwoCards = [
       new Card("2S"), 
@@ -28,8 +27,7 @@ export class AppController {
     ];
 
     const playerTwoHand = new Hand(playerTwoCards, "Player 2");
-    evaluatehandService.hand = playerTwoHand;
-    evaluatehandService.run();
+    evaluatehandService.run(playerTwoHand);
     const result = deciderService.evaluate(playerOneHand, playerTwoHand);
     console.log(result);
     

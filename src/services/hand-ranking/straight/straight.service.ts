@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import Card from '@models/Card';
+import HandCategory from '@/models/HandCategory';
+import { Category } from '@/enums/Category';
 
 @Injectable()
 export class StraightService {
@@ -14,6 +16,6 @@ export class StraightService {
             const isLastIndex = index == rankArray.length - 1;
             return isSequential || isLastIndex;
         });
-        return isStraight;
+        return isStraight ? [new HandCategory(Category.STRAIGHT)] : [];
     }
 }

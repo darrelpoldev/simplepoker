@@ -11,10 +11,10 @@ import { StraightFlushService } from '../hand-ranking/straight-flush/straight-fl
 import { StraightService } from '../hand-ranking/straight/straight.service';
 import { ThreeOfAkindService } from '../hand-ranking/three-of-akind/three-of-akind.service';
 import { TwoPairService } from '../hand-ranking/two-pair/two-pair.service';
+import Result from '@/models/Result';
 
 @Injectable()
 export class EvaluateHandService {
-    hand: Hand;
     constructor(
         private readonly highCardService: HighCardService,
         private readonly onePairService: OnePairService,
@@ -30,60 +30,22 @@ export class EvaluateHandService {
 
     }
 
-    // TODO: IMPROVE THIS DAMN CODE
-    public run() {
-        if (this.hand == null) {
-            throw ('Please provide a hand to evaluate.');
-        }
-        const cardPool = this.hand.cardPool.map(card => card);
-        this.hand.highestRankingCard = this.highCardService.getHighestRankingCard(cardPool);
-        
-        const hasPair = this.onePairService.evaluate(cardPool);
-        if (hasPair) {
-            this.hand.possibleHandCategories.push(new HandCategory(Category.ONE_PAIR));
-        };
-        
-        const hasTwoPair = this.twoPairService.evaluate(cardPool);
-        if (hasTwoPair) {
-            this.hand.possibleHandCategories.push(new HandCategory(Category.TWO_PAIR));
-        };
-        
-        const hasThreeOfAKind = this.threeOfAkindService.evaluate(cardPool);
-        
-        if (hasThreeOfAKind) {
-            this.hand.possibleHandCategories.push(new HandCategory(Category.THREE_OF_A_KIND));
-        };
+    public run(hand: Hand) {
+        const cardPool = hand.cardPool.map(card => card);
+        hand.highestRankingCard = this.highCardService.getHighestRankingCard(cardPool);
+        hand.possibleHandCategories.push(...this.onePairService.evaluate(cardPool));
+        hand.possibleHandCategories.push(...this.twoPairService.evaluate(cardPool));
+        hand.possibleHandCategories.push(...this.threeOfAkindService.evaluate(cardPool));
+        hand.possibleHandCategories.push(...this.fourOfAkindService.evaluate(cardPool));
+        hand.possibleHandCategories.push(...this.straightService.evaluate(cardPool));
+        hand.possibleHandCategories.push(...this.flushService.evaluate(cardPool));
+        hand.possibleHandCategories.push(...this.fullHouseService.evaluate(cardPool));
+        hand.possibleHandCategories.push(...this.straightFlushService.evaluate(cardPool));
+    }
 
-        const hasFourOfAKind = this.fourOfAkindService.evaluate(cardPool);
-        
-        if (hasFourOfAKind) {
-            this.hand.possibleHandCategories.push(new HandCategory(Category.FOUR_OF_A_KIND));
-        };
-
-        const hasStraight = this.straightService.evaluate(cardPool);
-        
-        if (hasStraight) {
-            this.hand.possibleHandCategories.push(new HandCategory(Category.STRAIGHT));
-        };
-
-        const hasFlush = this.flushService.evaluate(cardPool);
-        
-        if (hasFlush) {
-            this.hand.possibleHandCategories.push(new HandCategory(Category.FLUSH));
-        };
-
-        const hasFullHouse = this.fullHouseService.evaluate(cardPool);
-        
-        if (hasFullHouse) {
-            this.hand.possibleHandCategories.push(new HandCategory(Category.FULL_HOUSE));
-        };
-
-        const hasStraightFlush = this.straightFlushService.evaluate(cardPool);
-        
-        if (hasStraightFlush) {
-            this.hand.possibleHandCategories.push(new HandCategory(Category.STRAIGHT_FLUSH));
-        };
-
-        //  console.log(this.hand.owner, this.hand);
+    public decide(_handOne: Hand, _handTwo: Hand) : Result {
+        const handOne = this.run(_handOne);
+        const handTwo = this.run(_handTwo);
+        return null;
     }
 }
