@@ -6,7 +6,6 @@ import { EvaluateHandService } from '@services/evaluate-hand/evaluate-hand.servi
 import { FlushService } from '@services/hand-ranking/flush/flush.service';
 import { FourOfAkindService } from '@services/hand-ranking/four-of-akind/four-of-akind.service';
 import { FullHouseService } from '@services/hand-ranking/full-house/full-house.service';
-import { HighCardService } from '@services/hand-ranking/high-card/high-card.service';
 import { OnePairService } from '@services/hand-ranking/one-pair/one-pair.service';
 import { StraightService } from '@services/hand-ranking/straight/straight.service';
 import { StraightFlushService } from '@services/hand-ranking/straight-flush/straight-flush.service';
@@ -16,6 +15,6 @@ import { TwoPairService } from '@services/hand-ranking/two-pair/two-pair.service
 @Module({
   imports: [],
   controllers: [AppController],
-  providers: [AppService, CardOccurenceService, EvaluateHandService, FlushService, FourOfAkindService, FullHouseService, HighCardService, OnePairService, StraightService, StraightFlushService, ThreeOfAkindService, TwoPairService],
+  providers: [AppService, CardOccurenceService, EvaluateHandService, FlushService, FourOfAkindService, FullHouseService, OnePairService, StraightService, StraightFlushService, ThreeOfAkindService, TwoPairService],
 })
 export class AppModule {}

@@ -1,22 +1,18 @@
 import { Injectable } from '@nestjs/common';
-import { Category } from 'src/enums/Category';
 import Hand from '@models/Hand';
-import HandCategory from '@models/HandCategory';
 import { FlushService } from '../hand-ranking/flush/flush.service';
 import { FourOfAkindService } from '../hand-ranking/four-of-akind/four-of-akind.service';
 import { FullHouseService } from '../hand-ranking/full-house/full-house.service';
-import { HighCardService } from '../hand-ranking/high-card/high-card.service';
 import { OnePairService } from '../hand-ranking/one-pair/one-pair.service';
 import { StraightFlushService } from '../hand-ranking/straight-flush/straight-flush.service';
 import { StraightService } from '../hand-ranking/straight/straight.service';
 import { ThreeOfAkindService } from '../hand-ranking/three-of-akind/three-of-akind.service';
 import { TwoPairService } from '../hand-ranking/two-pair/two-pair.service';
-import Result from '@/models/Result';
+import Result from '@models/Result';
 
 @Injectable()
 export class EvaluateHandService {
     constructor(
-        private readonly highCardService: HighCardService,
         private readonly onePairService: OnePairService,
         private readonly twoPairService: TwoPairService,
         private readonly threeOfAkindService: ThreeOfAkindService,

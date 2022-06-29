@@ -11,16 +11,6 @@ export class Card {
     this.rank = cardRank.indexOf(this.value);
   }
 
-  //TODO: Can we move this to a service?
-  static sort(a: Card, b: Card) {
-    if (a.rank > b.rank) {
-      return -1;
-    } else if (a.rank < b.rank) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
 }
 
 export default Card;
