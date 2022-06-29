@@ -234,10 +234,4 @@ describe('EvaluateHandService', () => {
   
     });
   });
-
-  
-  
-  
-
-
 });
