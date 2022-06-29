@@ -13,7 +13,6 @@ export class StraightFlushService {
     evaluate(cardPool: Card[]) {
         const isStraight = this.straightService.evaluate(cardPool).length;
         const isFlush = this.flushService.evaluate(cardPool).length;
-        console.log(isStraight, isFlush);
         return (isStraight && isFlush) ? [new HandCategory(Category.STRAIGHT_FLUSH)] : [];
     }
 }

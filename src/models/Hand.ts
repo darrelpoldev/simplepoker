@@ -1,29 +1,36 @@
 import Card from "./Card";
 import { Category } from "@enums/Category";
 import HandCategory from "./HandCategory";
+import SortHelper from "@shared/sort-helper";
 
 
 export class Hand {
-  owner: string = '';
-  //  TODO: Create getter and setter   
-  cardPool: Card[] = [];
-  //  TODO: Create getter and setter 
-  possibleHandCategories: HandCategory[] = [];
-  //  TODO: Create getter and setter 
-  highestRankingCard: Card;
-  //  TODO: Create getter and setter 
-  highestHandCategory: HandCategory;
+  public owner: string = '';
+  public possibleHandCategories: HandCategory[] = [];
+  private _cards: Card[];
 
   constructor(cards: Card[], owner: string = '') {
     this.owner = owner;
-    this.cardPool = cards;
+    this.CardPool = cards;
     this.possibleHandCategories.push(new HandCategory(Category.HIGH_CARD));
   }
-  
-  evaluate() {
-    
+
+  public set CardPool(playerCards: Card[]) {
+    this._cards = playerCards;
   }
- 
+
+  public get CardPool() {
+    return this._cards.sort(SortHelper.sort);
+  }
+
+  public get HighestHandCategory(): HandCategory {
+    return this.possibleHandCategories.sort(SortHelper.sort)[0];
+  }
+
+  public get HighestRankingCard(): Card {
+    return this.CardPool.sort(SortHelper.sort)[0];
+  }
+
 }
 
 export default Hand;

@@ -25,14 +25,10 @@ export class EvaluateHandService {
         private readonly flushService: FlushService,
         private readonly fullHouseService: FullHouseService,
         private readonly straightFlushService: StraightFlushService,
-        ) 
-    {
-
-    }
+        ) { }
 
     public run(hand: Hand) {
-        const cardPool = hand.cardPool.map(card => card);
-        hand.highestRankingCard = this.highCardService.getHighestRankingCard(cardPool);
+        const cardPool = hand.CardPool.map(card => card);
         hand.possibleHandCategories.push(...this.onePairService.evaluate(cardPool));
         hand.possibleHandCategories.push(...this.twoPairService.evaluate(cardPool));
         hand.possibleHandCategories.push(...this.threeOfAkindService.evaluate(cardPool));
@@ -41,11 +37,13 @@ export class EvaluateHandService {
         hand.possibleHandCategories.push(...this.flushService.evaluate(cardPool));
         hand.possibleHandCategories.push(...this.fullHouseService.evaluate(cardPool));
         hand.possibleHandCategories.push(...this.straightFlushService.evaluate(cardPool));
+        return hand;
     }
 
     public decide(_handOne: Hand, _handTwo: Hand) : Result {
         const handOne = this.run(_handOne);
         const handTwo = this.run(_handTwo);
+        console.log(handOne, handTwo);
         return null;
     }
 }

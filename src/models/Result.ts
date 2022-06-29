@@ -4,15 +4,15 @@ export class Result {
     public winningHand: Hand;
 
     public get category() {
-        return this.winningHand.highestHandCategory;
+        return this.winningHand.HighestHandCategory;
     }
 
     public get winningCards() {
-        return this.winningHand.cardPool;
+        return this.winningHand.CardPool;
     }
     
     public get highestRankingCard() {
-        return this.winningHand.highestRankingCard;
+        return this.winningHand.HighestRankingCard;
     }
     
     constructor(hand: Hand) {

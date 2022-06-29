@@ -2,12 +2,11 @@ import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 import Card from '@models/Card';
 import Hand from '@models/Hand';
-import { DeciderService } from '@services/decider/decider.service';
 import { EvaluateHandService } from '@services/evaluate-hand/evaluate-hand.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService, private readonly evaluatehandService: EvaluateHandService, private readonly deciderService: DeciderService) {
+  constructor(private readonly appService: AppService, private readonly evaluatehandService: EvaluateHandService) {
     const playerOneCards = [
       new Card("2D"), 
       new Card("2S"), 
@@ -15,8 +14,6 @@ export class AppController {
       new Card("5C"), 
       new Card("6D")
     ];
-    const playerOneHand = new Hand(playerOneCards, "Player 1");
-    evaluatehandService.run(playerOneHand);
 
     const playerTwoCards = [
       new Card("2S"), 
@@ -25,12 +22,10 @@ export class AppController {
       new Card("5D"), 
       new Card("6H")
     ];
-
+    const playerOneHand = new Hand(playerOneCards, "Player 1");
     const playerTwoHand = new Hand(playerTwoCards, "Player 2");
-    evaluatehandService.run(playerTwoHand);
-    const result = deciderService.evaluate(playerOneHand, playerTwoHand);
+    const result = this.evaluatehandService.decide(playerOneHand, playerTwoHand);
     console.log(result);
-    
   }
 
   @Get()
