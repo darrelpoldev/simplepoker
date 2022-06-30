@@ -25,7 +25,6 @@ export class AppController {
     const playerOneHand = new Hand(playerOneCards, "Player 1");
     const playerTwoHand = new Hand(playerTwoCards, "Player 2");
     const result = this.evaluatehandService.decide(playerOneHand, playerTwoHand);
-    console.log(result);
   }
 
   @Get()

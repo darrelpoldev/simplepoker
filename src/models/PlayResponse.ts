@@ -1,7 +1,7 @@
+import Card from "./Card";
 import Hand from "./Hand";
 
 export class PlayResponse {
-    public winningHand: Hand;
     public message: string;
 }
 
