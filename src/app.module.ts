@@ -11,10 +11,11 @@ import { StraightService } from '@services/hand-ranking/straight/straight.servic
 import { StraightFlushService } from '@services/hand-ranking/straight-flush/straight-flush.service';
 import { ThreeOfAkindService } from '@services/hand-ranking/three-of-akind/three-of-akind.service';
 import { TwoPairService } from '@services/hand-ranking/two-pair/two-pair.service';
+import { DeciderService } from './services/decider/decider.service';
 
 @Module({
   imports: [],
   controllers: [AppController],
-  providers: [AppService, CardOccurenceService, EvaluateHandService, FlushService, FourOfAkindService, FullHouseService, OnePairService, StraightService, StraightFlushService, ThreeOfAkindService, TwoPairService],
+  providers: [AppService, CardOccurenceService, EvaluateHandService, FlushService, FourOfAkindService, FullHouseService, OnePairService, StraightService, StraightFlushService, ThreeOfAkindService, TwoPairService, DeciderService],
 })
 export class AppModule {}

@@ -9,6 +9,9 @@ import { StraightService } from '../hand-ranking/straight/straight.service';
 import { ThreeOfAkindService } from '../hand-ranking/three-of-akind/three-of-akind.service';
 import { TwoPairService } from '../hand-ranking/two-pair/two-pair.service';
 import Result from '@models/Result';
+import { Category } from '@/enums/Category';
+import HandCategory from '@/models/HandCategory';
+import SortHelper from '@/shared/sort-helper';
 
 @Injectable()
 export class EvaluateHandService {
@@ -39,23 +42,17 @@ export class EvaluateHandService {
     public decide(_handOne: Hand, _handTwo: Hand) : Result {
         const handOne = this.run(_handOne);
         const handTwo = this.run(_handTwo);
+        const competingHands: Hand[] = [handOne, handTwo];
+        const showDownResult = competingHands.sort((aHand, bHand) => SortHelper.sort(aHand.HighestHandCategory, bHand.HighestHandCategory));
+        const handWithHighestRankingCard = showDownResult.filter(hand => hand.possibleHandCategories.length == 1);
+        const decideByHighCard = handWithHighestRankingCard.length == 2;
         const result = new Result();
-        if (handOne.HighestHandCategory.rank > handTwo.HighestHandCategory.rank) {
-            result.winningHand = handOne;
-        }
-        else if (handTwo.HighestHandCategory.rank > handOne.HighestHandCategory.rank) {
-            result.winningHand = handTwo;
+        if (decideByHighCard) {
+            const winnerByHighCard = competingHands.sort((aHand, bHand) => SortHelper.sort(aHand.HighestRankingCard, bHand.HighestRankingCard));
+            result.winningHand = winnerByHighCard.shift();
         }
         else {
-            if (handOne.HighestRankingCard.rank > handTwo.HighestRankingCard.rank) {
-                result.winningHand = handOne;
-            }
-            else if (handTwo.HighestRankingCard.rank > handOne.HighestRankingCard.rank) {
-                result.winningHand = handTwo;
-            }
-            else {
-                console.log('No one can win with these cards. ')
-            }
+            result.winningHand = showDownResult.shift();
         }
         return result;
     }

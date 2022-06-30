@@ -188,7 +188,7 @@ describe('EvaluateHandService', () => {
         new Card("1C"), 
         new Card("6D")
       ];
-      const playerOneTestHands = new Hand(playerOneTestCards);
+      const playerOneTestHands = new Hand(playerOneTestCards, 'player 1');
   
       const playerTwoTestCards = [
         new Card("8D"), 
@@ -197,7 +197,7 @@ describe('EvaluateHandService', () => {
         new Card("1C"), 
         new Card("6D")
       ];
-      const playerTwoTestHands = new Hand(playerTwoTestCards);
+      const playerTwoTestHands = new Hand(playerTwoTestCards, 'player 2');
   
       it("should return PLAYER ONE cards", () => {
         const result = evaluateHandService.decide(playerOneTestHands, playerTwoTestHands);
@@ -215,7 +215,7 @@ describe('EvaluateHandService', () => {
         new Card("1C"), 
         new Card("6D")
       ];
-      const playerOneTestHands = new Hand(playerOneTestCards);
+      const playerOneTestHands = new Hand(playerOneTestCards, 'player 1');
   
       const playerTwoTestCards = [
         new Card("8D"), 
@@ -224,12 +224,41 @@ describe('EvaluateHandService', () => {
         new Card("AC"), 
         new Card("6D")
       ];
-      const playerTwoTestHands = new Hand(playerTwoTestCards);
+      const playerTwoTestHands = new Hand(playerTwoTestCards, 'player 2');
   
       it("should return PLAYER TWO cards", () => {
         const result = evaluateHandService.decide(playerOneTestHands, playerTwoTestHands);
         const winningHand = result.winningCards;
         expect(winningHand).toBe(playerTwoTestCards);
+      });
+    });
+
+    describe('when the winner is decided by high card', () => {
+      const playerOneTestCards = [
+        new Card("2D"), 
+        new Card("4S"), 
+        new Card("5H"), 
+        new Card("7C"), 
+        new Card("9D")
+      ];
+      const playerOneTestHands = new Hand(playerOneTestCards, 'player 1');
+  
+      const playerTwoTestCards = [
+        new Card("2D"), 
+        new Card("4S"), 
+        new Card("5H"), 
+        new Card("7C"), 
+        new Card("TD") // WINNER BY HIGH CARD
+      ];
+      const playerTwoTestHands = new Hand(playerTwoTestCards, 'player 2');
+  
+      it("should return PLAYER TWO cards", () => {
+        console.log(playerTwoTestHands.owner, playerTwoTestCards.map(x => `${x.value}${x.suit}`));
+
+        const result = evaluateHandService.decide(playerOneTestHands, playerTwoTestHands);
+        const winningCards = result.winningCards;
+        console.log(result.playerName, winningCards.map(x => `${x.value}${x.suit}`));
+        expect(winningCards).toBe(playerTwoTestCards);
       });
     });
   });
