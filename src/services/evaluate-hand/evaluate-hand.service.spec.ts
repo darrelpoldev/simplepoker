@@ -251,14 +251,37 @@ describe('EvaluateHandService', () => {
         new Card("TD") // WINNER BY HIGH CARD
       ];
       const playerTwoTestHands = new Hand(playerTwoTestCards, 'player 2');
-  
-      it("should return PLAYER TWO cards", () => {
-        console.log(playerTwoTestHands.owner, playerTwoTestCards.map(x => `${x.value}${x.suit}`));
 
+      it("should return PLAYER TWO cards", () => {
         const result = evaluateHandService.decide(playerOneTestHands, playerTwoTestHands);
         const winningCards = result.winningCards;
-        console.log(result.playerName, winningCards.map(x => `${x.value}${x.suit}`));
         expect(winningCards).toBe(playerTwoTestCards);
+      });
+    });
+
+    describe('when a TIE happened', () => {
+      const playerOneTestCards = [
+        new Card("2D"), 
+        new Card("4S"), 
+        new Card("5H"), 
+        new Card("7C"), 
+        new Card("9D")
+      ];
+      const playerOneTestHands = new Hand(playerOneTestCards, 'player 1');
+  
+      const playerTwoTestCards = [
+        new Card("2C"), 
+        new Card("4H"), 
+        new Card("5C"), 
+        new Card("7D"), 
+        new Card("9S")
+      ];
+      const playerTwoTestHands = new Hand(playerTwoTestCards, 'player 2');
+
+      it("should return nothing", () => {
+        const result = evaluateHandService.decide(playerOneTestHands, playerTwoTestHands);
+        const winningCards = result.winningCards;
+        expect(winningCards).toBe(undefined);
       });
     });
   });
