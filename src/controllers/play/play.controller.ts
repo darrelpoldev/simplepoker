@@ -1,5 +1,6 @@
 import Hand from '@/models/Hand';
 import { PlayPayload } from '@/models/interfaces/PlayPayload';
+import { ShuffledCardsResponse } from '@/models/interfaces/ShuffledCardsResponse';
 import PlayResponse from '@/models/PlayResponse';
 import { CardService } from '@/services/card/card.service';
 import { DeciderService } from '@/services/decider/decider.service';
@@ -13,11 +14,6 @@ export class PlayController {
     constructor(private cardService: CardService, private deciderService: DeciderService) {
 
     }
-    
-    @Get()
-    play() {
-        return 'get random 2 five hands and decide who won';
-    }
 
     @Post()
     public playAndDecide(@Body() playRequest: PlayPayload) : PlayResponse {
@@ -29,6 +25,26 @@ export class PlayController {
         }
         return playResponse;
     }
-
-
+    
+    //  INFO: PLEASE IGNORE THIS. I JUST CREATED THIS FOR MY OWN SAKE 'COZ I'M lazy thinking random cards. Thanks.
+    @Get()
+    play() {
+        let play = new PlayResponse();
+        let response: ShuffledCardsResponse = {
+            message: '',
+            playerOneCards: [],
+            playerTwoCards: []
+        };
+        try {
+            const randomCardsForPlayerOne = this.cardService.getRandomCards(5);
+            const randomCardsForPlayerTwo = this.cardService.getRandomCards(5);
+            play = this.deciderService.run(randomCardsForPlayerOne, randomCardsForPlayerTwo);
+            response.playerOneCards = randomCardsForPlayerOne;
+            response.playerTwoCards = randomCardsForPlayerTwo;
+            response.message = play.message;
+        } catch (error) {
+            response.message = `Something went wrong. Probably related to the payload ${error}`
+        }
+        return response;
+    }
 }
