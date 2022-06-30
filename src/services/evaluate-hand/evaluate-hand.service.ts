@@ -46,13 +46,11 @@ export class EvaluateHandService {
         const showDownResult = competingHands.sort((aHand, bHand) => SortHelper.sort(aHand.HighestHandCategory, bHand.HighestHandCategory));
         const handWithHighestRankingCard = showDownResult.filter(hand => hand.possibleHandCategories.length == 1);
         const decideByHighCard = handWithHighestRankingCard.length == 2;
-        const tie = handOne.HighestRankingCard.rank == handTwo.HighestRankingCard.rank;
         const result = new Result();
         if (decideByHighCard) {
-            if (!tie) {
-                const winnerByHighCard = competingHands.sort((aHand, bHand) => SortHelper.sort(aHand.HighestRankingCard, bHand.HighestRankingCard));
-                result.winningHand = winnerByHighCard.shift();    
-            }
+            const tie = handOne.HighestRankingCard.rank == handTwo.HighestRankingCard.rank;
+            const winnerByHighCard = competingHands.sort((aHand, bHand) => SortHelper.sort(aHand.HighestRankingCard, bHand.HighestRankingCard));
+            result.winningHand = !tie && winnerByHighCard.shift();
         }
         else {
             result.winningHand = showDownResult.shift();

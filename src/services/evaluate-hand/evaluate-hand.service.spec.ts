@@ -186,7 +186,7 @@ describe('EvaluateHandService', () => {
         new Card("2S"), 
         new Card("4H"), 
         new Card("1C"), 
-        new Card("6D")
+        new Card("AD")
       ];
       const playerOneTestHands = new Hand(playerOneTestCards, 'player 1');
   
@@ -195,7 +195,7 @@ describe('EvaluateHandService', () => {
         new Card("QS"), 
         new Card("4H"), 
         new Card("1C"), 
-        new Card("6D")
+        new Card("AD")
       ];
       const playerTwoTestHands = new Hand(playerTwoTestCards, 'player 2');
   
