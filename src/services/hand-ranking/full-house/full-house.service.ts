@@ -10,6 +10,7 @@ export class FullHouseService {
     constructor(private cardOccurenceService: CardOccurenceService) { }
 
     evaluate(cardPool: Card[]) {
+        if (cardPool.length == 0) return [];
         const cardOccurence: CardOccurrence[] = this.cardOccurenceService.evaluate(cardPool);
         const hasThreeOfAKind = cardOccurence.find(card => card.occurrence == 3);
         const hasAPair = cardOccurence.find(card => card.occurrence == 2);

@@ -11,6 +11,7 @@ export class FourOfAkindService {
     constructor(private cardOccurenceService: CardOccurenceService) { }
 
     evaluate(cardPool: Card[]) {
+        if (cardPool.length == 0) return [];
         const cardOccurence: CardOccurrence[] = this.cardOccurenceService.evaluate(cardPool);
         return cardOccurence.find(card => card.occurrence == 4) ? [new HandCategory(Category.FOUR_OF_A_KIND)] : [];
     }

@@ -11,6 +11,7 @@ export class ThreeOfAkindService {
     constructor(private cardOccurenceService: CardOccurenceService) { }
 
     evaluate(cardPool: Card[]) {
+        if (cardPool.length == 0) return [];
         const cardOccurence: CardOccurrence[] = this.cardOccurenceService.evaluate(cardPool);
         return cardOccurence.find(card => card.occurrence == 3) ? [new HandCategory(Category.THREE_OF_A_KIND)] : [];
     }

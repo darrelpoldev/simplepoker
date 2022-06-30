@@ -10,6 +10,7 @@ export class StraightService {
     constructor() {}
 
     evaluate(cardPool: Card[]) {
+        if (cardPool.length == 0) return [];
         const cards = cardPool.map(card => card).sort(SortHelper.sort);
         const ranks = cards.map(card => card.rank);
         const isStraight = ranks.every((rank: number, index: number, rankArray: number[]) => {

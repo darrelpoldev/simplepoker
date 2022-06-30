@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import Card from '@models/Card';
 import { CardOccurenceService } from '@services/card-occurence/card-occurence.service';
 import { TwoPairService } from './two-pair.service';
+import { Category } from '@/enums/Category';
 
 describe('TwoPairService', () => {
   let service: TwoPairService;
@@ -34,12 +35,12 @@ describe('TwoPairService', () => {
   });
 
   describe('when evaluate method is called', () => {
-    it('should return true when a two pair is detected', () => {
+    it(`should return true when a ${Category.TWO_PAIR} is detected`, () => {
       const result = service.evaluate(cardsWithTwoPair);
       expect(result.length).toBe(1);
     });
     
-    it('should return false when no two pair is detected', () => {
+    it(`should return false when no ${Category.TWO_PAIR} is detected`, () => {
       const result = service.evaluate(cardsWithoutTwoPair);
       expect(result.length).toBe(0);
     });

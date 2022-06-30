@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import Card from '@models/Card';
 import { CardOccurenceService } from '@services/card-occurence/card-occurence.service';
 import { ThreeOfAkindService } from './three-of-akind.service';
+import { Category } from '@/enums/Category';
 
 describe('ThreeOfAkindService', () => {
   let service: ThreeOfAkindService;
@@ -35,12 +36,12 @@ describe('ThreeOfAkindService', () => {
   });
 
   describe('when evaluate method is called', () => {
-    it('should return true when a three of a kind is detected', () => {
+    it(`should return true when a ${Category.THREE_OF_A_KIND} is detected`, () => {
       const result = service.evaluate(cardsWithThreeOfAKind);
       expect(result.length).toBe(1);
     });
     
-    it('should return false when no three of a kind is detected', () => {
+    it(`should return false when no ${Category.THREE_OF_A_KIND} is detected`, () => {
       const result = service.evaluate(cardsWithoutThreeOfAKind);
       expect(result.length).toBe(0);
     });

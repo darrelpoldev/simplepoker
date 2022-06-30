@@ -8,6 +8,7 @@ export class FlushService {
     constructor() {}
 
     evaluate(cardPool: Card[]) {
+        if (cardPool.length == 0) return [];
         const cards = cardPool.map(card => card);
         const firstCard = cards.at(0);
         const numberWithSameSuit = cards.filter(card => card.suit == firstCard.suit);
