@@ -1,5 +1,6 @@
 import { CardOccurenceService } from '@/services/card-occurence/card-occurence.service';
 import { CardService } from '@/services/card/card.service';
+import { DeciderService } from '@/services/decider/decider.service';
 import { EvaluateHandService } from '@/services/evaluate-hand/evaluate-hand.service';
 import { FlushService } from '@/services/hand-ranking/flush/flush.service';
 import { FourOfAkindService } from '@/services/hand-ranking/four-of-akind/four-of-akind.service';
@@ -18,7 +19,7 @@ describe('PlayController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [PlayController],
-      providers: [CardService, EvaluateHandService, OnePairService, TwoPairService, FourOfAkindService, StraightFlushService, StraightService, FullHouseService, CardOccurenceService, ThreeOfAkindService, FlushService]
+      providers: [CardService, EvaluateHandService, OnePairService, TwoPairService, FourOfAkindService, StraightFlushService, StraightService, FullHouseService, CardOccurenceService, ThreeOfAkindService, FlushService, DeciderService]
     }).compile();
 
     controller = module.get<PlayController>(PlayController);

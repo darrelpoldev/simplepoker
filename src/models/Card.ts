@@ -6,6 +6,7 @@ export class Card {
   rank: number = 0;
   isValidValue: boolean;
   isValidSuit: boolean;
+  isValidLength: boolean;
   
   constructor(inputCard: string) {
     this.value = inputCard.substring(0, 1);
@@ -13,6 +14,7 @@ export class Card {
     this.rank = cardRank.indexOf(this.value);
     this.isValidValue = this.rank >= 0;
     this.isValidSuit = validSuits.indexOf(this.suit) >= 0;
+    this.isValidLength = inputCard.length == 2;
   }
 
 }

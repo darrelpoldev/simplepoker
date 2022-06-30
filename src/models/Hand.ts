@@ -32,8 +32,17 @@ export class Hand {
   }
 
   public get InvalidCards(): Card[] {
-    return this.CardPool.filter(card => !card.isValidValue || !card.isValidSuit);
+    return this.CardPool?.filter(card => !card.isValidValue || !card.isValidSuit || !card.isValidLength);
   }
+
+  public get InvalidCardString(): string[] {
+    return this.InvalidCards?.map(card => `${card.value}${card.suit}`);
+  }
+
+  public get HasInvalidCards(): boolean {
+    return this.InvalidCards.length > 0;
+  }
+
 
 }
 

@@ -15,6 +15,10 @@ export class Result {
         return this.winningHand?.CardPool;
     }
     
+    public get winningCardString() {
+        return this.winningCards?.map(card => `${card.value}${card.suit}`);
+    }
+    
     public get highestRankingCard() {
         return this.winningHand?.HighestRankingCard;
     }
