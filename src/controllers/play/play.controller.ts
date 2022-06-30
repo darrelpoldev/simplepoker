@@ -23,11 +23,7 @@ export class PlayController {
     public playAndDecide(@Body() playRequest: PlayPayload) : PlayResponse {
         let playResponse = new PlayResponse();
         try {
-            const playerOneCards = this.cardService.fromArrayString(playRequest.playerOneCards);
-            const playerTwoCards = this.cardService.fromArrayString(playRequest.playerTwoCards);    
-            const playerOneHand = new Hand(playerOneCards, 'PLAYER 1');
-            const playerTwoHand = new Hand(playerTwoCards, 'PLAYER 2');
-            playResponse = this.deciderService.run(playerOneHand, playerTwoHand);
+            playResponse = this.deciderService.run(playRequest.playerOneCards, playRequest.playerTwoCards);
         } catch (error) {
             playResponse.message = `Something went wrong. Probably related to the payload ${error}`
         }
