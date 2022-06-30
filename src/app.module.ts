@@ -13,10 +13,11 @@ import { ThreeOfAkindService } from '@services/hand-ranking/three-of-akind/three
 import { TwoPairService } from '@services/hand-ranking/two-pair/two-pair.service';
 import { DeciderService } from './services/decider/decider.service';
 import { PlayController } from './controllers/play/play.controller';
+import { CardService } from './services/card/card.service';
 
 @Module({
   imports: [],
   controllers: [AppController, PlayController],
-  providers: [AppService, CardOccurenceService, EvaluateHandService, FlushService, FourOfAkindService, FullHouseService, OnePairService, StraightService, StraightFlushService, ThreeOfAkindService, TwoPairService, DeciderService],
+  providers: [AppService, CardOccurenceService, EvaluateHandService, FlushService, FourOfAkindService, FullHouseService, OnePairService, StraightService, StraightFlushService, ThreeOfAkindService, TwoPairService, DeciderService, CardService],
 })
 export class AppModule {}

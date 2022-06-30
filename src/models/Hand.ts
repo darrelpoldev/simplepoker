@@ -31,6 +31,10 @@ export class Hand {
     return this.CardPool.sort(SortHelper.sort)[0];
   }
 
+  public get InvalidCards(): Card[] {
+    return this.CardPool.filter(card => !card.isValidValue || !card.isValidSuit);
+  }
+
 }
 
 export default Hand;
