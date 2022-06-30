@@ -15,5 +15,6 @@ const handRank = [
     Category.STRAIGHT_FLUSH
 ];
 
+const validSuits = [ 'S', 'H', 'D', 'C'  ];
 
-export { cardRank, handRank };
+export { cardRank, handRank, validSuits };
