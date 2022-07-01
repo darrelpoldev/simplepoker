@@ -1,0 +1,11 @@
+export enum Category {
+    STRAIGHT_FLUSH = "STRAIGHT_FLUSH",
+    FOUR_OF_A_KIND = "FOUR_OF_A_KIND",
+    FULL_HOUSE = "FULL_HOUSE",
+    FLUSH = "FLUSH",
+    STRAIGHT = "STRAIGHT",
+    THREE_OF_A_KIND = "THREE_OF_A_KIND",
+    TWO_PAIR = "TWO_PAIR",
+    ONE_PAIR = "ONE_PAIR",
+    HIGH_CARD = "HIGH_CARD"
+}
