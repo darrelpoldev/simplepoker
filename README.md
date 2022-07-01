@@ -30,6 +30,11 @@ I created an endpoint to capture the inputs
 
 [START HERE](https://github.com/poldarreldev/simplepoker/blob/main/src/services/evaluate-hand/evaluate-hand.service.ts#L42)
 
+###### Interested with unit tests?
+
+1. Run unit tests by running `npm run test`
+2. You can also view the [UNIT TESTS HERE](https://github.com/poldarreldev/simplepoker/blob/main/src/services/evaluate-hand/evaluate-hand.service.spec.ts#L17)
+
 ###### PSEUDO CODE when deciding who has higher ranking card
 
 1. Create the "Hand" object from the cards.
