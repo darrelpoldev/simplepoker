@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import Card from '@models/Card';
-import { CardOccurrence } from '@models/interfaces/CardOccurrence';
+import { CardOccurrence } from '@/models/interfaces/CardOccurrence';
 import { CardOccurenceService } from '@services/card-occurence/card-occurence.service';
 import HandCategory from '@/models/HandCategory';
 import { Category } from '@/enums/Category';
