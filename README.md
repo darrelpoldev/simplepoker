@@ -35,6 +35,19 @@ I created an endpoint to capture the inputs
 1. Run unit tests by running `npm run test`
 2. You can also view the [UNIT TESTS HERE](https://github.com/poldarreldev/simplepoker/blob/main/src/services/evaluate-hand/evaluate-hand.service.spec.ts#L17)
 
+###### Valid Inputs
+
+Values - '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'
+Suits:
+S - SPADE
+H - HEART
+D - DIAMOND
+C - CLUB
+
+Example Card - '2S' or 2 of SPADES.
+
+NOTE: 'T' is equal to 10.
+
 ###### PSEUDO CODE when deciding who has higher ranking card
 
 1. Create the "Hand" object from the cards.
